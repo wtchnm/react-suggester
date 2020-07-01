@@ -1,5 +1,5 @@
 {
-  "name": "react-suggester",
+  "name": "@wtchnm/react-suggester",
   "version": "1.0.0",
   "main": "dist/bundle.js",
   "license": "MIT",
