@@ -10,28 +10,36 @@
   },
   "devDependencies": {
     "@babel/core": "7.10.4",
+    "@rollup/plugin-node-resolve": "8.1.0",
+    "@rollup/plugin-typescript": "5.0.1",
     "@storybook/addon-actions": "5.3.19",
     "@storybook/addon-info": "5.3.19",
     "@storybook/addon-links": "5.3.19",
     "@storybook/addons": "5.3.19",
     "@storybook/react": "5.3.19",
     "@types/jest": "26.0.3",
+    "@types/rollup-plugin-postcss": "2.0.0",
     "autoprefixer": "9.8.4",
     "babel-loader": "8.1.0",
+    "cross-env": "7.0.2",
     "cssnano": "4.1.10",
     "jest": "26.1.0",
     "postcss-loader": "3.0.0",
     "react-docgen-typescript-loader": "3.7.2",
+    "react-dom": "16.13.1",
+    "rollup": "2.18.1",
+    "rollup-plugin-postcss": "3.1.2",
+    "rollup-plugin-terser": "6.1.0",
     "ts-jest": "26.1.1",
     "ts-loader": "7.0.5",
     "typescript": "3.9.5"
   },
   "peerDependencies": {
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react": "16.13.1"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "cross-env NODE_ENV=production rollup -c"
   }
 }

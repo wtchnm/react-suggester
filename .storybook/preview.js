@@ -1,1 +1,1 @@
-require("!style-loader!css-loader!postcss-loader!./global.css");
+require("!style-loader!css-loader!postcss-loader!../src/global.css");
