@@ -9,7 +9,6 @@
     "jsx": "react",
     "moduleResolution": "node",
     "rootDirs": ["src"],
-    "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -18,9 +17,9 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "declaration": true,
-    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "scripts"]
