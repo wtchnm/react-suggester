@@ -3,13 +3,15 @@ import resolve from "@rollup/plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 
+const INJECT_PROCESS_MODULE_ID = "\0inject-process";
+
 export default {
   input: "src/index.ts",
   external: ["react"],
   output: {
     name: "ReactSuggester",
-    file: "dist/bundle.js",
-    format: "iife",
+    file: "dist/ReactSuggester.min.js",
+    format: "umd",
     sourcemap: true,
     globals: {
       react: "React",
@@ -19,9 +21,27 @@ export default {
     typescript(),
     resolve({ browser: true }),
     postcss({
-      extract: true,
+      extract: "ReactSuggester.min.css",
       sourceMap: true,
     }),
     terser(),
+    {
+      name: "inject-process-plugin",
+      resolveId(id) {
+        if (id === INJECT_PROCESS_MODULE_ID) {
+          return INJECT_PROCESS_MODULE_ID;
+        }
+      },
+      load(id) {
+        if (id === INJECT_PROCESS_MODULE_ID) {
+          return `export const env = {NODE_ENV: 'production'};\n`;
+        }
+      },
+      transform(code, id) {
+        if (id !== INJECT_PROCESS_MODULE_ID) {
+          return `import * as process from '${INJECT_PROCESS_MODULE_ID}';\n${code}`;
+        }
+      },
+    },
   ],
 };

@@ -82,6 +82,8 @@ function Suggester({
   );
 
   const filteredOptions = useMemo(() => {
+    if (async) return options;
+
     const valueToMatch = value.toLowerCase();
     return options.filter((option) => {
       const label = option.label.toLowerCase();
@@ -139,7 +141,7 @@ function Suggester({
   }, [loading, value, filteredOptions]);
 
   return (
-    <div>
+    <div className="relative">
       <Input
         ref={inputRef}
         value={value}
@@ -153,7 +155,7 @@ function Suggester({
       {open && (
         <ul
           className={clsx(
-            "shadow-sm overflow-auto mt-1 bg-gray-200 w-full rounded py-2",
+            "z-50 absolute shadow-sm overflow-auto mt-1 bg-gray-200 w-full rounded py-2",
             styles["Suggester__options"]
           )}
         >
