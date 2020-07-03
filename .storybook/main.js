@@ -2,7 +2,7 @@
 
 module.exports = {
   stories: ["../src/stories/*.stories.tsx"],
-  addons: ["@storybook/addon-actions"],
+  addons: ["@storybook/addon-actions", "@storybook/addon-storysource"],
   webpackFinal: async (config) => {
     config.module.rules.forEach((rule) => {
       if (rule.test.toString() === "/\\.css$/") {
