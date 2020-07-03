@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from "react";
+import React, { useMemo } from "react";
 import { nanoid } from "nanoid";
 
 interface Props {
@@ -13,10 +13,15 @@ interface Props {
   onBlur?(event: React.FocusEvent<HTMLInputElement>): void;
 }
 
-function Input(
-  { value, onChange, label, placeholder, onFocus, onMouseDown, onBlur }: Props,
-  ref: React.MutableRefObject<HTMLInputElement>
-): ReactElement {
+function Input({
+  value,
+  onChange,
+  label,
+  placeholder,
+  onFocus,
+  onMouseDown,
+  onBlur,
+}: Props) {
   const componentId = useMemo(() => nanoid(), []);
 
   return (
@@ -30,7 +35,6 @@ function Input(
         </label>
       )}
       <input
-        ref={ref}
         value={value}
         onChange={onChange}
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:bg-white focus:border-blue-500"
@@ -45,4 +49,4 @@ function Input(
   );
 }
 
-export default React.forwardRef(Input);
+export default Input;

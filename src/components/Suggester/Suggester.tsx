@@ -1,10 +1,4 @@
-import React, {
-  ReactElement,
-  useState,
-  useCallback,
-  useRef,
-  useMemo,
-} from "react";
+import React, { ReactElement, useState, useCallback, useMemo } from "react";
 import Input from "../Input";
 import { Option } from "../../types";
 import styles from "./Suggester.module.css";
@@ -32,7 +26,6 @@ function Suggester({
   onSearch,
   onSelect,
 }: Props): ReactElement {
-  const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
   const [shouldBlur, setShouldBlur] = useState(true);
@@ -143,7 +136,6 @@ function Suggester({
   return (
     <div className="relative">
       <Input
-        ref={inputRef}
         value={value}
         onChange={onChange}
         label={label}
