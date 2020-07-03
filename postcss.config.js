@@ -1,6 +1,5 @@
-/**
- * @param {{ env: string; }} ctx
- */
+// @ts-check
+
 module.exports = (ctx) => ({
   plugins: {
     tailwindcss: {},

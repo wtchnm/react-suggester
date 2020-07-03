@@ -1,5 +1,7 @@
+// @ts-check
+
 import typescript from "@rollup/plugin-typescript";
-import resolve from "@rollup/plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 
@@ -19,7 +21,7 @@ export default {
   },
   plugins: [
     typescript(),
-    resolve({ browser: true }),
+    nodeResolve({ browser: true }),
     postcss({
       extract: "ReactSuggester.min.css",
       sourceMap: true,
