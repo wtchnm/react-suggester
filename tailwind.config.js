@@ -1,7 +1,7 @@
 // @ts-check
 
 module.exports = {
-  purge: ["./src/components/*.tsx"],
+  purge: ["./src/**/*.tsx"],
   theme: {
     extend: {},
   },
