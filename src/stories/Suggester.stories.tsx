@@ -1,9 +1,11 @@
 import React, { useCallback, useState } from "react";
 import Suggester from "../components/Suggester/Suggester";
 import { Option } from "../types";
+import { withKnobs, text, object } from "@storybook/addon-knobs";
 
 export default {
   title: "Suggester",
+  decorators: [withKnobs],
 };
 
 const DEFAULT_OPTIONS: Option[] = [
@@ -50,42 +52,49 @@ const DEFAULT_OPTIONS: Option[] = [
 ];
 
 export function Sync() {
+  const label = text("Label", "Name");
+  const placeholder = text("Placeholder", "John Doe");
+  const options = object("Options", DEFAULT_OPTIONS);
+
   return (
     <div className="p-4 max-w-md">
-      <Suggester
-        label="Patient name"
-        placeholder="John Doe"
-        options={DEFAULT_OPTIONS}
-      />
+      <Suggester label={label} placeholder={placeholder} options={options} />
     </div>
   );
 }
 
 export function Async() {
+  const label = text("Label", "Name");
+  const placeholder = text("Placeholder", "John Doe");
+  const defaultOptions = object("Options", DEFAULT_OPTIONS);
+
   const [options, setOptions] = useState<Option[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const onSearch = useCallback((value: string) => {
-    setLoading(true);
-    setTimeout(() => {
-      const valueToMatch = value.toLowerCase();
-      const filteredOptions = DEFAULT_OPTIONS.filter((option) => {
-        const label = option.label.toLowerCase();
-        return label.indexOf(valueToMatch) === 0;
-      });
+  const onSearch = useCallback(
+    (value: string) => {
+      setLoading(true);
+      setTimeout(() => {
+        const valueToMatch = value.toLowerCase();
+        const filteredOptions = defaultOptions.filter((option) => {
+          const label = option.label.toLowerCase();
+          return label.indexOf(valueToMatch) === 0;
+        });
 
-      setOptions(filteredOptions);
-      setLoading(false);
-    }, 500);
-  }, []);
+        setOptions(filteredOptions);
+        setLoading(false);
+      }, 500);
+    },
+    [defaultOptions]
+  );
 
   return (
     <div className="p-4 max-w-md">
       <Suggester
         async
         loading={loading}
-        label="Patient name"
-        placeholder="John Doe"
+        label={label}
+        placeholder={placeholder}
         options={options}
         onSearch={onSearch}
       />
