@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { nanoid } from "nanoid";
+import nanoid from "../utils/nanoid";
 
 interface Props {
   value?: string | number;
@@ -22,7 +22,7 @@ function Input({
   onMouseDown,
   onBlur,
 }: Props) {
-  const componentId = useMemo(() => nanoid(), []);
+  const componentId = useMemo(() => "Input-" + nanoid(), []);
 
   return (
     <div className="flex flex-col">

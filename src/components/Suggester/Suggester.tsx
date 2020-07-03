@@ -2,7 +2,6 @@ import React, { ReactElement, useState, useCallback, useMemo } from "react";
 import Input from "../Input";
 import { Option } from "../../types";
 import styles from "./Suggester.module.css";
-import clsx from "clsx";
 
 interface Props {
   options: Option[];
@@ -146,10 +145,7 @@ function Suggester({
       />
       {open && (
         <ul
-          className={clsx(
-            "z-50 absolute shadow-sm overflow-auto mt-1 bg-gray-200 w-full rounded py-2",
-            styles["Suggester__options"]
-          )}
+          className={`z-50 absolute shadow-sm overflow-auto mt-1 bg-gray-200 w-full rounded py-2 ${styles["Suggester__options"]}`}
         >
           {getOptions()}
         </ul>
