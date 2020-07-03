@@ -22,6 +22,7 @@
     "@storybook/addons": "5.3.19",
     "@storybook/react": "5.3.19",
     "@storybook/source-loader": "5.3.19",
+    "@storybook/storybook-deployer": "2.8.6",
     "@types/jest": "26.0.3",
     "@types/rollup-plugin-postcss": "2.0.0",
     "autoprefixer": "9.8.4",
@@ -47,7 +48,12 @@
   },
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages",
     "build": "cross-env NODE_ENV=production rollup -c"
+  },
+  "storybook-deployer": {
+    "gitUsername": "wtchnm",
+    "gitEmail": "wtchnm@icloud.com",
+    "commitMessage": "chore: deploy storybook"
   }
 }
