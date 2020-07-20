@@ -84,52 +84,39 @@ function Suggester({
   }, [options, value]);
 
   const getOptions = useCallback((): ReactElement | ReactElement[] => {
-    if (async && value.length < min) {
-      return (
-        <li
-          key={`Suggester__option-loading`}
-          className="select-none text-gray-600 py-1 px-3"
-          onMouseDown={onOptionMouseDown}
-        >
-          Enter at least {min} characters
-        </li>
-      );
+    if (async) {
+      let optionText;
+      if (loading) {
+        optionText = "Loading...";
+      } else if (value.length < min) {
+        optionText = `Enter at least ${min} characters`;
+      } else if (!filteredOptions.length) {
+        optionText = "No suggestions";
+      }
+
+      if (optionText) {
+        return (
+          <li
+            key={`Suggester__option-loading`}
+            className="select-none text-gray-600 py-1 px-3"
+            onMouseDown={onOptionMouseDown}
+          >
+            {optionText}
+          </li>
+        );
+      }
     }
 
-    if (async && loading) {
-      return (
-        <li
-          key={`Suggester__option-loading`}
-          className="select-none text-gray-600 py-1 px-3"
-          onMouseDown={onOptionMouseDown}
-        >
-          Loading...
-        </li>
-      );
-    }
-
-    if (filteredOptions.length) {
-      return filteredOptions.map((option, index) => (
-        <li
-          key={`Suggester__option-${index}`}
-          className="cursor-pointer select-none hover:bg-gray-300 active:bg-gray-400 text-gray-600 py-1 px-3"
-          onMouseDown={onOptionMouseDown}
-          onMouseUp={onOptionMouseUp(option)}
-        >
-          {option.label}
-        </li>
-      ));
-    }
-
-    return (
+    return filteredOptions.map((option, index) => (
       <li
-        key={`Suggester__option-empty`}
-        className="select-none text-gray-600 py-1 px-3"
+        key={`Suggester__option-${index}`}
+        className="cursor-pointer select-none hover:bg-gray-300 active:bg-gray-400 text-gray-600 py-1 px-3"
         onMouseDown={onOptionMouseDown}
+        onMouseUp={onOptionMouseUp(option)}
       >
-        No suggestions
+        {option.label}
       </li>
-    );
+    ));
   }, [loading, value, filteredOptions]);
 
   return (
