@@ -1,12 +1,13 @@
 {
   "name": "@wtchnm/react-suggester",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "dist/bundle.js",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
+    "clsx": "1.1.1",
     "tailwindcss": "1.5.1"
   },
   "files": [

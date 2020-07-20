@@ -1,6 +1,14 @@
-import React, { ReactElement, useState, useCallback, useMemo } from "react";
+import React, {
+  ReactElement,
+  useState,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
 import Input from "../Input";
 import { Option } from "../../types";
+import clsx from "clsx";
+
 import styles from "./Suggester.module.css";
 
 interface Props {
@@ -28,6 +36,13 @@ function Suggester({
   const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
   const [shouldBlur, setShouldBlur] = useState(true);
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
+  const dropdownRef = useRef<HTMLUListElement>(null);
+
+  const closeDropdown = useCallback(() => {
+    setOpen(false);
+    setSelectedOptionIndex(0);
+  }, []);
 
   const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -52,7 +67,7 @@ function Suggester({
         return;
       }
 
-      setOpen(false);
+      closeDropdown();
     },
     [shouldBlur]
   );
@@ -62,7 +77,7 @@ function Suggester({
   }, []);
   const onOptionMouseUp = useCallback(
     (option: Option) => () => {
-      setOpen(false);
+      closeDropdown();
       setShouldBlur(true);
       setValue(option.label);
 
@@ -82,6 +97,54 @@ function Suggester({
       return label.indexOf(valueToMatch) === 0;
     });
   }, [options, value]);
+
+  const onKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.defaultPrevented || !dropdownRef.current) {
+        return;
+      }
+      switch (event.key) {
+        case "Down":
+        case "ArrowDown": {
+          event.preventDefault();
+          if (selectedOptionIndex === filteredOptions.length - 1) {
+            setSelectedOptionIndex(0);
+            dropdownRef.current.scrollTop = 0;
+          } else {
+            setSelectedOptionIndex(selectedOptionIndex + 1);
+            dropdownRef.current.scrollTop = selectedOptionIndex * 32;
+          }
+
+          break;
+        }
+        case "Up":
+        case "ArrowUp": {
+          event.preventDefault();
+          if (selectedOptionIndex === 0) {
+            setSelectedOptionIndex(filteredOptions.length - 1);
+            dropdownRef.current.scrollTop = (filteredOptions.length - 1) * 32;
+          } else {
+            setSelectedOptionIndex(selectedOptionIndex - 1);
+            dropdownRef.current.scrollTop = (selectedOptionIndex - 1) * 32;
+          }
+
+          break;
+        }
+        case "Enter":
+          event.preventDefault();
+          onOptionMouseUp(filteredOptions[selectedOptionIndex])();
+          break;
+        case "Esc":
+        case "Escape":
+          event.preventDefault();
+          closeDropdown();
+          break;
+        default:
+          return;
+      }
+    },
+    [selectedOptionIndex, filteredOptions, dropdownRef]
+  );
 
   const getOptions = useCallback((): ReactElement | ReactElement[] => {
     if (async) {
@@ -110,14 +173,21 @@ function Suggester({
     return filteredOptions.map((option, index) => (
       <li
         key={`Suggester__option-${index}`}
-        className="cursor-pointer select-none hover:bg-gray-300 active:bg-gray-400 text-gray-600 py-1 px-3"
+        className={clsx(
+          "select-none text-gray-600 py-1 px-3",
+          "cursor-pointer active:bg-gray-400",
+          {
+            "hover:bg-gray-300": selectedOptionIndex !== index,
+            "bg-gray-400": selectedOptionIndex === index,
+          }
+        )}
         onMouseDown={onOptionMouseDown}
         onMouseUp={onOptionMouseUp(option)}
       >
         {option.label}
       </li>
     ));
-  }, [loading, value, filteredOptions]);
+  }, [loading, value, filteredOptions, selectedOptionIndex]);
 
   return (
     <div className="relative">
@@ -129,9 +199,11 @@ function Suggester({
         onFocus={onFocus}
         onMouseDown={onFocus}
         onBlur={onBlur}
+        onKeyDown={onKeyDown}
       />
       {open && (
         <ul
+          ref={dropdownRef}
           className={`z-50 absolute shadow-sm overflow-auto mt-1 bg-gray-200 w-full rounded py-2 ${styles["Suggester__options"]}`}
         >
           {getOptions()}

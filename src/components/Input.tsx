@@ -11,6 +11,7 @@ interface Props {
   onFocus?(event: React.FocusEvent<HTMLInputElement>): void;
   onMouseDown?(event: React.MouseEvent<HTMLInputElement, MouseEvent>): void;
   onBlur?(event: React.FocusEvent<HTMLInputElement>): void;
+  onKeyDown?(event: React.KeyboardEvent<HTMLInputElement>): void;
 }
 
 function Input({
@@ -21,6 +22,7 @@ function Input({
   onFocus,
   onMouseDown,
   onBlur,
+  onKeyDown,
 }: Props) {
   const componentId = useMemo(() => "Input-" + nanoid(), []);
 
@@ -44,6 +46,7 @@ function Input({
         onFocus={onFocus}
         onMouseDown={onMouseDown}
         onBlur={onBlur}
+        onKeyDown={onKeyDown}
       />
     </div>
   );
