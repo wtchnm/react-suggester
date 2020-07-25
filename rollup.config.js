@@ -2,21 +2,39 @@ import { babel } from "@rollup/plugin-babel";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
+import { sizeSnapshot } from "rollup-plugin-size-snapshot";
 
 const extensions = [".js", ".jsx", ".es6", ".es", ".mjs", ".ts", ".tsx"];
+
+const common = {
+  name: "ReactSuggester",
+  sourcemap: true,
+  globals: {
+    react: "React",
+  },
+};
 
 export default {
   input: "src/index.ts",
   external: ["react"],
-  output: {
-    name: "ReactSuggester",
-    file: "dist/ReactSuggester.js",
-    format: "umd",
-    sourcemap: true,
-    globals: {
-      react: "React",
+  output: [
+    {
+      ...common,
+      file: "dist/ReactSuggester.umd.js",
+      format: "umd",
     },
-  },
+    {
+      ...common,
+      file: "dist/ReactSuggester.esm.js",
+      format: "esm",
+    },
+    {
+      ...common,
+      file: "dist/ReactSuggester.cjs.js",
+      format: "cjs",
+      exports: "auto",
+    },
+  ],
   plugins: [
     nodeResolve({
       browser: true,
@@ -31,6 +49,7 @@ export default {
       extract: "ReactSuggester.css",
       sourceMap: true,
     }),
+    sizeSnapshot(),
     terser(),
   ],
 };
