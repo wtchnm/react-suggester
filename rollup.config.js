@@ -1,5 +1,3 @@
-// @ts-check
-
 import typescript from "@rollup/plugin-typescript";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
@@ -33,16 +31,19 @@ export default {
         if (id === INJECT_PROCESS_MODULE_ID) {
           return INJECT_PROCESS_MODULE_ID;
         }
+        return undefined;
       },
       load(id) {
         if (id === INJECT_PROCESS_MODULE_ID) {
           return `export const env = {NODE_ENV: 'production'};\n`;
         }
+        return undefined;
       },
       transform(code, id) {
         if (id !== INJECT_PROCESS_MODULE_ID) {
           return `import * as process from '${INJECT_PROCESS_MODULE_ID}';\n${code}`;
         }
+        return undefined;
       },
     },
   ],

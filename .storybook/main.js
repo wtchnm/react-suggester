@@ -1,7 +1,5 @@
-// @ts-check
-
 module.exports = {
-  stories: ["../src/stories/*.stories.tsx"],
+  stories: ["../stories/*.stories.tsx"],
   addons: [
     "@storybook/addon-actions",
     "@storybook/addon-storysource",

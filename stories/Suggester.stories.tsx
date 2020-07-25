@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from "react";
-import Suggester from "../components/Suggester/Suggester";
-import { Option } from "../types";
+import React, { useCallback, useState, ReactElement } from "react";
 import { withKnobs, text, object } from "@storybook/addon-knobs";
+import Suggester from "../src/components/Suggester/Suggester";
+import { Option } from "../src/types";
 
 export default {
   title: "Suggester",
@@ -51,7 +51,7 @@ const DEFAULT_OPTIONS: Option[] = [
   },
 ];
 
-export function Sync() {
+export function Sync(): ReactElement {
   const label = text("Label", "Name");
   const placeholder = text("Placeholder", "John Doe");
   const options = object("Options", DEFAULT_OPTIONS);
@@ -63,7 +63,7 @@ export function Sync() {
   );
 }
 
-export function Async() {
+export function Async(): ReactElement {
   const label = text("Label", "Name");
   const placeholder = text("Placeholder", "John Doe");
   const defaultOptions = object("Options", DEFAULT_OPTIONS);
@@ -77,8 +77,8 @@ export function Async() {
       setTimeout(() => {
         const valueToMatch = value.toLowerCase();
         const filteredOptions = defaultOptions.filter((option) => {
-          const label = option.label.toLowerCase();
-          return label.indexOf(valueToMatch) === 0;
+          const labelToMatch = option.label.toLowerCase();
+          return labelToMatch.indexOf(valueToMatch) === 0;
         });
 
         setOptions(filteredOptions);

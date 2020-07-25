@@ -1,13 +1,13 @@
-import React from "react";
-import Input from "../components/Input";
+import React, { ReactElement } from "react";
 import { withKnobs, text } from "@storybook/addon-knobs";
+import Input from "../src/components/Input";
 
 export default {
   title: "Input",
   decorators: [withKnobs],
 };
 
-export function Default() {
+export function Default(): ReactElement {
   return (
     <div className="p-4 max-w-md">
       <Input />
@@ -15,7 +15,7 @@ export function Default() {
   );
 }
 
-export function WithLabelAndPlaceholder() {
+export function WithLabelAndPlaceholder(): ReactElement {
   const label = text("Label", "Name");
   const placeholder = text("Placeholder", "John Doe");
 

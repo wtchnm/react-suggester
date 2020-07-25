@@ -2,12 +2,13 @@
  * Generates a unique string ID
  * @see https://github.com/ai/nanoid
  */
-function nanoid() {
+function nanoid(): string {
   let id = "";
   let size = 21;
-  let bytes = crypto.getRandomValues(new Uint8Array(size));
-  while (size--) {
-    let byte = bytes[size] & 63;
+  const bytes = crypto.getRandomValues(new Uint8Array(size));
+  while (size) {
+    // eslint-disable-next-line no-bitwise
+    const byte = bytes[size] & 63;
     if (byte < 36) {
       id += byte.toString(36);
     } else if (byte < 62) {
@@ -17,6 +18,8 @@ function nanoid() {
     } else {
       id += "-";
     }
+
+    size -= 1;
   }
   return id;
 }

@@ -1,0 +1,78 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 11
+  },
+  "overrides": [
+    {
+      "files": ["rollup.config.js"],
+      "parserOptions": {
+        "sourceType": "module"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "airbnb",
+        "airbnb/hooks",
+        "plugin:import/typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier",
+        "prettier/@typescript-eslint",
+        "prettier/babel",
+        "prettier/react"
+      ],
+      "plugins": ["babel"],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": ["stories/**", "rollup.config.js"],
+            "optionalDependencies": false,
+            "peerDependencies": true,
+            "bundledDependencies": false
+          }
+        ],
+
+        "no-void": ["error", { "allowAsStatement": true }],
+
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+        "react/jsx-one-expression-per-line": 0,
+        "react/prop-types": 0,
+        "react/require-default-props": 0,
+
+        "import/extensions": [
+          1,
+          {
+            "ts": "never"
+          }
+        ],
+        "import/named": 0,
+        "import/namespace": 0,
+        "import/default": 0,
+        "import/no-named-as-default-member": 0,
+
+        "new-cap": 0,
+        "babel/new-cap": 1,
+        "camelcase": 0,
+        "babel/camelcase": 1,
+        "no-invalid-this": 0,
+        "babel/no-invalid-this": 1,
+        "no-unused-expressions": 0,
+        "babel/no-unused-expressions": 1,
+        "valid-typeof": 0,
+        "babel/valid-typeof": 1
+      }
+    }
+  ]
+}

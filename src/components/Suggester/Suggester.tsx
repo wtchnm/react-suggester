@@ -5,9 +5,9 @@ import React, {
   useMemo,
   useRef,
 } from "react";
+import clsx from "clsx";
 import Input from "../Input";
 import { Option } from "../../types";
-import clsx from "clsx";
 
 import styles from "./Suggester.module.css";
 
@@ -44,15 +44,18 @@ function Suggester({
     setSelectedOptionIndex(0);
   }, []);
 
-  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    setValue(inputValue);
-    setOpen(true);
+  const onChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const inputValue = event.target.value;
+      setValue(inputValue);
+      setOpen(true);
 
-    if (async && onSearch && inputValue.length >= 3) {
-      onSearch(inputValue);
-    }
-  }, []);
+      if (async && onSearch && inputValue.length >= 3) {
+        onSearch(inputValue);
+      }
+    },
+    [async, onSearch]
+  );
 
   const onFocus = useCallback(() => {
     setOpen(true);
@@ -69,7 +72,7 @@ function Suggester({
 
       closeDropdown();
     },
-    [shouldBlur]
+    [closeDropdown, shouldBlur]
   );
 
   const onOptionMouseDown = useCallback(() => {
@@ -85,7 +88,7 @@ function Suggester({
         onSelect(option);
       }
     },
-    []
+    [closeDropdown, onSelect]
   );
 
   const filteredOptions = useMemo(() => {
@@ -93,10 +96,10 @@ function Suggester({
 
     const valueToMatch = value.toLowerCase();
     return options.filter((option) => {
-      const label = option.label.toLowerCase();
-      return label.indexOf(valueToMatch) === 0;
+      const labelToMatch = option.label.toLowerCase();
+      return labelToMatch.indexOf(valueToMatch) === 0;
     });
-  }, [options, value]);
+  }, [async, options, value]);
 
   const onKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -140,10 +143,9 @@ function Suggester({
           closeDropdown();
           break;
         default:
-          return;
       }
     },
-    [selectedOptionIndex, filteredOptions, dropdownRef]
+    [onOptionMouseUp, filteredOptions, selectedOptionIndex, closeDropdown]
   );
 
   const getOptions = useCallback((): ReactElement | ReactElement[] => {
@@ -159,22 +161,24 @@ function Suggester({
 
       if (optionText) {
         return (
-          <li
-            key={`Suggester__option-loading`}
-            className="select-none text-gray-600 py-1 px-3"
+          <button
+            type="button"
+            key="Suggester__option-loading"
+            className="block w-full text-left select-none text-gray-600 py-1 px-3"
             onMouseDown={onOptionMouseDown}
           >
             {optionText}
-          </li>
+          </button>
         );
       }
     }
 
     return filteredOptions.map((option, index) => (
-      <li
-        key={`Suggester__option-${index}`}
+      <button
+        type="button"
+        key={`Suggester__option-${option.value}`}
         className={clsx(
-          "select-none text-gray-600 py-1 px-3",
+          "block w-full text-left select-none text-gray-600 py-1 px-3",
           "cursor-pointer active:bg-gray-400",
           {
             "hover:bg-gray-300": selectedOptionIndex !== index,
@@ -185,9 +189,18 @@ function Suggester({
         onMouseUp={onOptionMouseUp(option)}
       >
         {option.label}
-      </li>
+      </button>
     ));
-  }, [loading, value, filteredOptions, selectedOptionIndex]);
+  }, [
+    async,
+    filteredOptions,
+    loading,
+    value.length,
+    min,
+    onOptionMouseDown,
+    selectedOptionIndex,
+    onOptionMouseUp,
+  ]);
 
   return (
     <div className="relative">
@@ -204,7 +217,7 @@ function Suggester({
       {open && (
         <ul
           ref={dropdownRef}
-          className={`z-50 absolute shadow-sm overflow-auto mt-1 bg-gray-200 w-full rounded py-2 ${styles["Suggester__options"]}`}
+          className={`z-50 absolute shadow-sm overflow-auto mt-1 bg-gray-200 w-full rounded py-2 ${styles.Suggester__options}`}
         >
           {getOptions()}
         </ul>

@@ -1,5 +1,3 @@
-// @ts-check
-
 module.exports = (ctx) => ({
   plugins: {
     tailwindcss: {},
