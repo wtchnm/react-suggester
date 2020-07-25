@@ -37,7 +37,7 @@ function Suggester({
   const [open, setOpen] = useState(false);
   const [shouldBlur, setShouldBlur] = useState(true);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
-  const dropdownRef = useRef<HTMLUListElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const closeDropdown = useCallback(() => {
     setOpen(false);
@@ -164,7 +164,7 @@ function Suggester({
           <button
             type="button"
             key="Suggester__option-loading"
-            className="block w-full text-left select-none text-gray-600 py-1 px-3"
+            className="block w-full text-left select-none text-gray-700 py-1 px-3"
             onMouseDown={onOptionMouseDown}
           >
             {optionText}
@@ -178,11 +178,11 @@ function Suggester({
         type="button"
         key={`Suggester__option-${option.value}`}
         className={clsx(
-          "block w-full text-left select-none text-gray-600 py-1 px-3",
+          "block w-full text-left select-none text-gray-700 py-1 px-3",
           "cursor-pointer active:bg-gray-400",
           {
-            "hover:bg-gray-300": selectedOptionIndex !== index,
-            "bg-gray-400": selectedOptionIndex === index,
+            "hover:bg-gray-200": selectedOptionIndex !== index,
+            "bg-gray-300": selectedOptionIndex === index,
           }
         )}
         onMouseDown={onOptionMouseDown}
@@ -215,12 +215,15 @@ function Suggester({
         onKeyDown={onKeyDown}
       />
       {open && (
-        <ul
+        <div
           ref={dropdownRef}
-          className={`z-50 absolute shadow-sm overflow-auto mt-1 bg-gray-200 w-full rounded py-2 ${styles.Suggester__options}`}
+          className={clsx(
+            "z-50 absolute overflow-auto mt-1 border shadow-sm w-full bg-white rounded py-2",
+            styles.Suggester__options
+          )}
         >
           {getOptions()}
-        </ul>
+        </div>
       )}
     </div>
   );

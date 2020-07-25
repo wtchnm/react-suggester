@@ -29,17 +29,14 @@ function Input({
   return (
     <div className="flex flex-col">
       {label && (
-        <label
-          className="text-gray-600 font-bold mb-1 pr-4"
-          htmlFor={componentId}
-        >
+        <label className="text-gray-700 mb-1 pr-4" htmlFor={componentId}>
           {label}
         </label>
       )}
       <input
         value={value}
         onChange={onChange}
-        className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:bg-white focus:border-blue-500"
+        className="appearance-none bg-white border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline focus:border-blue-400"
         id={componentId}
         type="text"
         placeholder={placeholder}
