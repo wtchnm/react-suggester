@@ -10,7 +10,7 @@ export default {
   external: ["react"],
   output: {
     name: "ReactSuggester",
-    file: "dist/ReactSuggester.min.js",
+    file: "dist/ReactSuggester.js",
     format: "umd",
     sourcemap: true,
     globals: {
@@ -28,7 +28,7 @@ export default {
       extensions,
     }),
     postcss({
-      extract: "ReactSuggester.min.css",
+      extract: "ReactSuggester.css",
       sourceMap: true,
     }),
     terser(),
