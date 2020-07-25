@@ -19,7 +19,10 @@ module.exports = {
       test: /\.css$/,
       loader: "postcss-loader",
     });
-    config.module.rules.push({ test: /\.tsx?$/, loader: "ts-loader" });
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      loader: "babel-loader",
+    });
     config.resolve.extensions.push(".ts", ".tsx");
     return config;
   },

@@ -29,6 +29,7 @@
     "@typescript-eslint/parser": "3.7.0",
     "autoprefixer": "9.8.5",
     "babel-loader": "8.1.0",
+    "babel-preset-react-app": "9.1.2",
     "cross-env": "7.0.2",
     "cssnano": "4.1.10",
     "eslint": "7.5.0",
@@ -52,7 +53,6 @@
     "stylelint-config-standard": "20.0.0",
     "tailwindcss": "1.5.2",
     "ts-jest": "26.1.3",
-    "ts-loader": "8.0.1",
     "tslib": "2.0.0",
     "typescript": "3.9.7",
     "webpack": "4.43.0"
