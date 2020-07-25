@@ -6,16 +6,24 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "dependencies": {
-    "clsx": "1.1.1"
-  },
   "files": [
     "dist/*"
   ],
+  "scripts": {
+    "start": "start-storybook -p 6006",
+    "deploy-storybook": "storybook-to-ghpages",
+    "build": "cross-env NODE_ENV=production rollup -c"
+  },
+  "dependencies": {
+    "clsx": "1.1.1"
+  },
+  "peerDependencies": {
+    "react": "16.13.1"
+  },
   "devDependencies": {
     "@babel/core": "7.10.5",
+    "@rollup/plugin-babel": "5.1.0",
     "@rollup/plugin-node-resolve": "8.4.0",
-    "@rollup/plugin-typescript": "5.0.2",
     "@storybook/addon-actions": "5.3.19",
     "@storybook/addon-knobs": "5.3.19",
     "@storybook/addon-storysource": "5.3.19",
@@ -56,14 +64,6 @@
     "tslib": "2.0.0",
     "typescript": "3.9.7",
     "webpack": "4.43.0"
-  },
-  "peerDependencies": {
-    "react": "16.13.1"
-  },
-  "scripts": {
-    "start": "start-storybook -p 6006",
-    "deploy-storybook": "storybook-to-ghpages",
-    "build": "cross-env NODE_ENV=production rollup -c"
   },
   "storybook-deployer": {
     "gitUsername": "wtchnm",

@@ -1,9 +1,9 @@
-import typescript from "@rollup/plugin-typescript";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
+import { babel } from "@rollup/plugin-babel";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 
-const INJECT_PROCESS_MODULE_ID = "\0inject-process";
+const extensions = [".js", ".jsx", ".es6", ".es", ".mjs", ".ts", ".tsx"];
 
 export default {
   input: "src/index.ts",
@@ -18,33 +18,19 @@ export default {
     },
   },
   plugins: [
-    typescript(),
-    nodeResolve({ browser: true }),
+    nodeResolve({
+      browser: true,
+      extensions,
+    }),
+    babel({
+      babelHelpers: "runtime",
+      skipPreflightCheck: true,
+      extensions,
+    }),
     postcss({
       extract: "ReactSuggester.min.css",
       sourceMap: true,
     }),
     terser(),
-    {
-      name: "inject-process-plugin",
-      resolveId(id) {
-        if (id === INJECT_PROCESS_MODULE_ID) {
-          return INJECT_PROCESS_MODULE_ID;
-        }
-        return undefined;
-      },
-      load(id) {
-        if (id === INJECT_PROCESS_MODULE_ID) {
-          return `export const env = {NODE_ENV: 'production'};\n`;
-        }
-        return undefined;
-      },
-      transform(code, id) {
-        if (id !== INJECT_PROCESS_MODULE_ID) {
-          return `import * as process from '${INJECT_PROCESS_MODULE_ID}';\n${code}`;
-        }
-        return undefined;
-      },
-    },
   ],
 };
