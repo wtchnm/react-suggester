@@ -149,28 +149,26 @@ function Suggester({
   );
 
   const getOptions = useCallback((): ReactElement | ReactElement[] => {
-    if (async) {
-      let optionText;
-      if (loading) {
-        optionText = "Loading...";
-      } else if (value.length < min) {
-        optionText = `Enter at least ${min} characters`;
-      } else if (!filteredOptions.length) {
-        optionText = "No suggestions";
-      }
+    let optionText;
+    if (async && loading) {
+      optionText = "Loading...";
+    } else if (async && value.length < min) {
+      optionText = `Enter at least ${min} characters`;
+    } else if (!filteredOptions.length) {
+      optionText = "No suggestions";
+    }
 
-      if (optionText) {
-        return (
-          <button
-            type="button"
-            key="Suggester__option-loading"
-            className="block w-full text-left select-none text-gray-700 py-1 px-3"
-            onMouseDown={onOptionMouseDown}
-          >
-            {optionText}
-          </button>
-        );
-      }
+    if (optionText) {
+      return (
+        <button
+          type="button"
+          key="Suggester__option-loading"
+          className="block w-full text-left select-none text-gray-700 py-1 px-3"
+          onMouseDown={onOptionMouseDown}
+        >
+          {optionText}
+        </button>
+      );
     }
 
     return filteredOptions.map((option, index) => (
