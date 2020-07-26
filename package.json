@@ -2,6 +2,9 @@
   "name": "react-suggester",
   "version": "1.0.0",
   "license": "MIT",
+  "main": "dist/ReactSuggester.cjs.js",
+  "module": "dist/ReactSuggester.esm.js",
+  "browser": "dist/ReactSuggester.umd.js",
   "files": [
     "dist/*"
   ],
