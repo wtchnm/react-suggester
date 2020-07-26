@@ -29,7 +29,10 @@ function Input({
   return (
     <div className="flex flex-col">
       {label && (
-        <label className="text-gray-700 mb-1 pr-4" htmlFor={componentId}>
+        <label
+          className="text-gray-700 mb-1 pr-4 leading-normal"
+          htmlFor={componentId}
+        >
           {label}
         </label>
       )}
