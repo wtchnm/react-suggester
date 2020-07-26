@@ -7,7 +7,7 @@ export default {
   decorators: [withKnobs],
 };
 
-export function WithLabelAndPlaceholder(): ReactElement {
+export function Default(): ReactElement {
   const label = text("Label", "Name");
   const placeholder = text("Placeholder", "John Doe");
 
