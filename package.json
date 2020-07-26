@@ -6,6 +6,7 @@
   "module": "dist/ReactSuggester.esm.js",
   "browser": "dist/ReactSuggester.umd.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist/*"
   ],
