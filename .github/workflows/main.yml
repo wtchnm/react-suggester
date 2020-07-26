@@ -43,8 +43,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          CI: true
         run: yarn semantic-release
 
       - name: Publish storybook
-        run: yarn deploy-storybook --ci --host-token-env-variable=GITHUB_TOKEN
+        run: yarn deploy-storybook --ci
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
