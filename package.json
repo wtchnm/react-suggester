@@ -10,6 +10,7 @@
     "dist/*"
   ],
   "scripts": {
+    "commit": "git-cz",
     "start": "start-storybook -p 6006",
     "deploy-storybook": "storybook-to-ghpages",
     "build": "cross-env NODE_ENV=production rollup -c && tsc --project tsconfig.types.json",
@@ -42,6 +43,7 @@
     "babel-preset-react-app": "9.1.2",
     "cross-env": "7.0.2",
     "cssnano": "4.1.10",
+    "cz-conventional-changelog": "3.2.0",
     "eslint": "7.5.0",
     "eslint-config-airbnb": "18.2.0",
     "eslint-config-prettier": "6.11.0",
@@ -77,5 +79,10 @@
     "gitUsername": "wtchnm",
     "gitEmail": "wtchnm@icloud.com",
     "commitMessage": "chore: deploy storybook"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
