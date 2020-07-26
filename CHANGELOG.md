@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/wtchnm/react-suggester/compare/v1.1.2...v1.1.3) (2020-07-26)
+
+
+### Bug Fixes
+
+* add line-height to the input label ([ad94191](https://github.com/wtchnm/react-suggester/commit/ad94191c32a22bc5e20c741af781f9ccbe924414))
+
 ## [1.1.2](https://github.com/wtchnm/react-suggester/compare/v1.1.1...v1.1.2) (2020-07-26)
 
 

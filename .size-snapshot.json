@@ -1,18 +1,18 @@
 {
   "ReactSuggester.umd.js": {
-    "bundled": 8472,
-    "minified": 3737,
-    "gzipped": 1625
+    "bundled": 8487,
+    "minified": 3752,
+    "gzipped": 1628
   },
   "ReactSuggester.cjs.js": {
-    "bundled": 7711,
-    "minified": 3880,
-    "gzipped": 1596
+    "bundled": 7726,
+    "minified": 3895,
+    "gzipped": 1599
   },
   "ReactSuggester.esm.js": {
-    "bundled": 7342,
-    "minified": 3556,
-    "gzipped": 1518,
+    "bundled": 7357,
+    "minified": 3571,
+    "gzipped": 1521,
     "treeshaked": {
       "rollup": {
         "code": 14,
