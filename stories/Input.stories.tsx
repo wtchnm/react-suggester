@@ -7,14 +7,6 @@ export default {
   decorators: [withKnobs],
 };
 
-export function Default(): ReactElement {
-  return (
-    <div className="p-4 max-w-md">
-      <Input />
-    </div>
-  );
-}
-
 export function WithLabelAndPlaceholder(): ReactElement {
   const label = text("Label", "Name");
   const placeholder = text("Placeholder", "John Doe");

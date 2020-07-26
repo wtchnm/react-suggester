@@ -14,7 +14,7 @@ import styles from "./Suggester.module.css";
 interface Props {
   options: Option[];
 
-  label?: string;
+  label: string;
   placeholder?: string;
   async?: true;
   loading?: boolean;
