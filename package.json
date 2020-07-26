@@ -1,6 +1,6 @@
 {
   "name": "@wtchnm/react-suggester",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "main": "dist/bundle.js",
   "license": "MIT",
   "publishConfig": {
