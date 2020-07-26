@@ -11,7 +11,7 @@
   "scripts": {
     "start": "start-storybook -p 6006",
     "deploy-storybook": "storybook-to-ghpages",
-    "build": "cross-env NODE_ENV=production rollup -c",
+    "build": "cross-env NODE_ENV=production rollup -c && tsc --project tsconfig.types.json",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
