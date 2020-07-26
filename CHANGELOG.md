@@ -1,3 +1,15 @@
+## [1.1.4](https://github.com/wtchnm/react-suggester/compare/v1.1.3...v1.1.4) (2020-07-26)
+
+
+### Bug Fixes
+
+* mark package as side effect free ([44d74b1](https://github.com/wtchnm/react-suggester/commit/44d74b1ff7c32d5029acb1079d2b776f83d77754))
+
+
+### Performance Improvements
+
+* **input:** remove unnecessary label null check ([b23da69](https://github.com/wtchnm/react-suggester/commit/b23da691156c00eb5f8be16e5592f422eb373d14))
+
 ## [1.1.3](https://github.com/wtchnm/react-suggester/compare/v1.1.2...v1.1.3) (2020-07-26)
 
 
