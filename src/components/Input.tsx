@@ -36,7 +36,7 @@ function Input({
       <input
         value={value}
         onChange={onChange}
-        className="appearance-none bg-white border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline focus:border-blue-400"
+        className="appearance-none bg-white border border-solid border-gray-400 rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline focus:border-blue-400 leading-normal box-border text-base placeholder-gray-500"
         id={componentId}
         type="text"
         placeholder={placeholder}

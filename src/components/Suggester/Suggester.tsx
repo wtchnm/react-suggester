@@ -163,7 +163,7 @@ function Suggester({
         <button
           type="button"
           key="Suggester__option-loading"
-          className="block w-full text-left select-none text-gray-700 py-1 px-3"
+          className="block w-full text-left select-none bg-white text-gray-700 py-1 px-3 border-none leading-normal text-base"
           onMouseDown={onOptionMouseDown}
         >
           {optionText}
@@ -176,8 +176,7 @@ function Suggester({
         type="button"
         key={`Suggester__option-${option.value}`}
         className={clsx(
-          "block w-full text-left select-none text-gray-700 py-1 px-3",
-          "cursor-pointer active:bg-gray-400",
+          "block w-full text-left select-none bg-white text-gray-700 py-1 px-3 cursor-pointer active:bg-gray-400 border-none leading-normal text-base",
           {
             "hover:bg-gray-200": selectedOptionIndex !== index,
             "bg-gray-300": selectedOptionIndex === index,
@@ -216,7 +215,7 @@ function Suggester({
         <div
           ref={dropdownRef}
           className={clsx(
-            "z-50 absolute overflow-auto mt-1 border shadow-sm w-full bg-white rounded py-2",
+            "z-50 absolute overflow-auto mt-1 border border-solid border-gray-400 shadow-sm w-full bg-white rounded py-2 box-border",
             styles.Suggester__options
           )}
         >

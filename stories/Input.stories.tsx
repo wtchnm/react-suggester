@@ -12,7 +12,7 @@ export function Default(): ReactElement {
   const placeholder = text("Placeholder", "John Doe");
 
   return (
-    <div className="p-4 max-w-md">
+    <div className="p-4 max-w-md box-border">
       <Input label={label} placeholder={placeholder} />
     </div>
   );

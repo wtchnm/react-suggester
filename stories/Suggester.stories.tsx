@@ -57,7 +57,7 @@ export function Sync(): ReactElement {
   const options = object("Options", DEFAULT_OPTIONS);
 
   return (
-    <div className="p-4 max-w-md">
+    <div className="p-4 max-w-md box-border">
       <Suggester label={label} placeholder={placeholder} options={options} />
     </div>
   );
@@ -89,7 +89,7 @@ export function Async(): ReactElement {
   );
 
   return (
-    <div className="p-4 max-w-md">
+    <div className="p-4 max-w-md box-border">
       <Suggester
         async
         loading={loading}
