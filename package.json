@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "main": "dist/bundle.js",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "files": [
     "dist/*"
   ],
@@ -69,13 +66,13 @@
     "typescript": "3.9.7",
     "webpack": "4.43.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wtchnm/react-suggester.git"
+  },
   "storybook-deployer": {
     "gitUsername": "wtchnm",
     "gitEmail": "wtchnm@icloud.com",
     "commitMessage": "chore: deploy storybook"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wtchnm/react-suggester.git"
   }
 }
