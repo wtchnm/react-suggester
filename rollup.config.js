@@ -12,6 +12,7 @@ const common = {
   globals: {
     react: "React",
   },
+  exports: "named",
 };
 
 export default {
@@ -32,7 +33,6 @@ export default {
       ...common,
       file: "dist/ReactSuggester.cjs.js",
       format: "cjs",
-      exports: "auto",
     },
   ],
   plugins: [
