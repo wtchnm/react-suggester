@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/wtchnm/react-suggester/compare/v1.1.0...v1.1.1) (2020-07-26)
+
+
+### Bug Fixes
+
+* include 'types' field in package.json ([d99c826](https://github.com/wtchnm/react-suggester/commit/d99c82687bc11bfd1f1cfdd773044d615261937c))
+
 # [1.1.0](https://github.com/wtchnm/react-suggester/compare/v1.0.1...v1.1.0) (2020-07-26)
 
 
