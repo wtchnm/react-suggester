@@ -5,6 +5,7 @@
   "main": "dist/ReactSuggester.cjs.js",
   "module": "dist/ReactSuggester.esm.js",
   "browser": "dist/ReactSuggester.umd.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/*"
   ],
