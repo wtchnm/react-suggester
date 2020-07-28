@@ -1,5 +1,5 @@
 import React, { useMemo, ReactElement } from "react";
-import nanoid from "../utils/nanoid";
+import { nanoid } from "nanoid/non-secure";
 
 interface Props {
   value?: string | number;
