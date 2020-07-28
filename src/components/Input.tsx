@@ -30,10 +30,7 @@ function Input({
 
   return (
     <div className="flex flex-col">
-      <label
-        htmlFor={componentId}
-        className="text-gray-700 mb-1 pr-4 leading-normal"
-      >
+      <label htmlFor={componentId} className="text-gray-700 leading-normal">
         {label}
       </label>
       <input
@@ -42,7 +39,7 @@ function Input({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="appearance-none bg-white border border-solid border-gray-400 rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline focus:border-blue-400 leading-normal box-border text-base placeholder-gray-500"
+        className="mt-1 box-border w-full py-2 px-3 rounded border border-solid border-gray-400 bg-white text-base leading-normal placeholder-gray-500 focus:outline-none focus:shadow-outline focus:border-blue-400"
         onFocus={onFocus}
         onBlur={onBlur}
         onMouseDown={onMouseDown}
