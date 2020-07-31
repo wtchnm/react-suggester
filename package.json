@@ -71,7 +71,7 @@
     "ts-jest": "26.1.4",
     "tslib": "2.0.0",
     "typescript": "3.9.7",
-    "webpack": "4.44.0"
+    "webpack": "4.44.1"
   },
   "repository": {
     "type": "git",
