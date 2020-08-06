@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/wtchnm/react-suggester/compare/v1.3.0...v1.4.0) (2020-08-06)
+
+
+### Features
+
+* add onClear callback ([7ebcafb](https://github.com/wtchnm/react-suggester/commit/7ebcafbdbd6679750a4532ea4adcf0274157fb86))
+
 # [1.3.0](https://github.com/wtchnm/react-suggester/compare/v1.2.0...v1.3.0) (2020-08-06)
 
 
