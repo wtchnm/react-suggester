@@ -21,6 +21,7 @@ interface Props {
   min?: number;
   onSearch?(value: string): void;
   onSelect?(option: Option): void;
+  onClear?(): void;
 }
 
 function Suggester({
@@ -32,16 +33,20 @@ function Suggester({
   min = 3,
   onSearch,
   onSelect,
+  onClear,
 }: Props): ReactElement {
   const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
   const [shouldBlur, setShouldBlur] = useState(true);
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
+  const [hoveredOptionIndex, setHoveredOptionIndex] = useState(0);
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(
+    null
+  );
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const closeDropdown = useCallback(() => {
     setOpen(false);
-    setSelectedOptionIndex(0);
+    setHoveredOptionIndex(0);
   }, []);
 
   const onChange = useCallback(
@@ -57,6 +62,35 @@ function Suggester({
     [async, onSearch]
   );
 
+  const filteredOptions = useMemo(() => {
+    if (async) return options;
+
+    const valueToMatch = value.toLowerCase();
+    return options.filter((option) => {
+      const labelToMatch = option.label.toLowerCase();
+      return labelToMatch.indexOf(valueToMatch) === 0;
+    });
+  }, [async, options, value]);
+
+  const onOptionMouseDown = useCallback(() => {
+    setShouldBlur(false);
+  }, []);
+  const onOptionMouseUp = useCallback(
+    (index: number) => () => {
+      const option = filteredOptions[index];
+
+      closeDropdown();
+      setSelectedOptionIndex(index);
+      setShouldBlur(true);
+      setValue(option.label);
+
+      if (onSelect) {
+        onSelect(option);
+      }
+    },
+    [closeDropdown, filteredOptions, onSelect]
+  );
+
   const onFocus = useCallback(() => {
     setOpen(true);
   }, []);
@@ -70,36 +104,26 @@ function Suggester({
         return;
       }
 
-      closeDropdown();
-    },
-    [closeDropdown, shouldBlur]
-  );
-
-  const onOptionMouseDown = useCallback(() => {
-    setShouldBlur(false);
-  }, []);
-  const onOptionMouseUp = useCallback(
-    (option: Option) => () => {
-      closeDropdown();
-      setShouldBlur(true);
-      setValue(option.label);
-
-      if (onSelect) {
-        onSelect(option);
+      if (selectedOptionIndex !== null && value !== "") {
+        onOptionMouseUp(selectedOptionIndex)();
+      } else {
+        setValue("");
+        setShouldBlur(true);
+        closeDropdown();
+        if (onClear) {
+          onClear();
+        }
       }
     },
-    [closeDropdown, onSelect]
+    [
+      closeDropdown,
+      onClear,
+      onOptionMouseUp,
+      selectedOptionIndex,
+      shouldBlur,
+      value,
+    ]
   );
-
-  const filteredOptions = useMemo(() => {
-    if (async) return options;
-
-    const valueToMatch = value.toLowerCase();
-    return options.filter((option) => {
-      const labelToMatch = option.label.toLowerCase();
-      return labelToMatch.indexOf(valueToMatch) === 0;
-    });
-  }, [async, options, value]);
 
   const onKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -110,12 +134,12 @@ function Suggester({
         case "Down":
         case "ArrowDown": {
           event.preventDefault();
-          if (selectedOptionIndex === filteredOptions.length - 1) {
-            setSelectedOptionIndex(0);
+          if (hoveredOptionIndex === filteredOptions.length - 1) {
+            setHoveredOptionIndex(0);
             dropdownRef.current.scrollTop = 0;
           } else {
-            setSelectedOptionIndex(selectedOptionIndex + 1);
-            dropdownRef.current.scrollTop = selectedOptionIndex * 32;
+            setHoveredOptionIndex(hoveredOptionIndex + 1);
+            dropdownRef.current.scrollTop = hoveredOptionIndex * 32;
           }
 
           break;
@@ -123,19 +147,19 @@ function Suggester({
         case "Up":
         case "ArrowUp": {
           event.preventDefault();
-          if (selectedOptionIndex === 0) {
-            setSelectedOptionIndex(filteredOptions.length - 1);
+          if (hoveredOptionIndex === 0) {
+            setHoveredOptionIndex(filteredOptions.length - 1);
             dropdownRef.current.scrollTop = (filteredOptions.length - 1) * 32;
           } else {
-            setSelectedOptionIndex(selectedOptionIndex - 1);
-            dropdownRef.current.scrollTop = (selectedOptionIndex - 1) * 32;
+            setHoveredOptionIndex(hoveredOptionIndex - 1);
+            dropdownRef.current.scrollTop = (hoveredOptionIndex - 1) * 32;
           }
 
           break;
         }
         case "Enter":
           event.preventDefault();
-          onOptionMouseUp(filteredOptions[selectedOptionIndex])();
+          onOptionMouseUp(hoveredOptionIndex)();
           break;
         case "Esc":
         case "Escape":
@@ -145,7 +169,7 @@ function Suggester({
         default:
       }
     },
-    [onOptionMouseUp, filteredOptions, selectedOptionIndex, closeDropdown]
+    [onOptionMouseUp, filteredOptions, hoveredOptionIndex, closeDropdown]
   );
 
   const getOptions = useCallback((): ReactElement | ReactElement[] => {
@@ -178,24 +202,24 @@ function Suggester({
         className={clsx(
           "block w-full text-left select-none bg-white text-gray-700 py-1 px-3 cursor-pointer active:bg-gray-400 border-none leading-normal text-base",
           {
-            "hover:bg-gray-200": selectedOptionIndex !== index,
-            "bg-gray-300": selectedOptionIndex === index,
+            "hover:bg-gray-200": hoveredOptionIndex !== index,
+            "bg-gray-300": hoveredOptionIndex === index,
           }
         )}
         onMouseDown={onOptionMouseDown}
-        onMouseUp={onOptionMouseUp(option)}
+        onMouseUp={onOptionMouseUp(index)}
       >
         {option.label}
       </button>
     ));
   }, [
     async,
-    filteredOptions,
     loading,
     value.length,
     min,
+    filteredOptions,
     onOptionMouseDown,
-    selectedOptionIndex,
+    hoveredOptionIndex,
     onOptionMouseUp,
   ]);
 
