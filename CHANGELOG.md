@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/wtchnm/react-suggester/compare/v1.1.6...v1.2.0) (2020-08-06)
+
+
+### Features
+
+* pass any standard attribute to the input component ([2b0bdee](https://github.com/wtchnm/react-suggester/commit/2b0bdee6ae049faf2fb9d3710340cb104420747b))
+
 ## [1.1.6](https://github.com/wtchnm/react-suggester/compare/v1.1.5...v1.1.6) (2020-07-28)
 
 ## [1.1.5](https://github.com/wtchnm/react-suggester/compare/v1.1.4...v1.1.5) (2020-07-28)
