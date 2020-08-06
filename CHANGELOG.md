@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/wtchnm/react-suggester/compare/v1.2.0...v1.3.0) (2020-08-06)
+
+
+### Features
+
+* forward Input component ref ([45f8052](https://github.com/wtchnm/react-suggester/commit/45f805278cf34ad08c7cc795da26a17b51cdb1f6))
+
 # [1.2.0](https://github.com/wtchnm/react-suggester/compare/v1.1.6...v1.2.0) (2020-08-06)
 
 
