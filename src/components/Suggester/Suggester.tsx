@@ -39,9 +39,7 @@ function Suggester({
   const [open, setOpen] = useState(false);
   const [shouldBlur, setShouldBlur] = useState(true);
   const [hoveredOptionIndex, setHoveredOptionIndex] = useState(0);
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(
-    null
-  );
+  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const closeDropdown = useCallback(() => {
@@ -76,11 +74,9 @@ function Suggester({
     setShouldBlur(false);
   }, []);
   const onOptionMouseUp = useCallback(
-    (index: number) => () => {
-      const option = filteredOptions[index];
-
+    (option: Option) => () => {
       closeDropdown();
-      setSelectedOptionIndex(index);
+      setSelectedOption(option);
       setShouldBlur(true);
       setValue(option.label);
 
@@ -88,7 +84,7 @@ function Suggester({
         onSelect(option);
       }
     },
-    [closeDropdown, filteredOptions, onSelect]
+    [closeDropdown, onSelect]
   );
 
   const onFocus = useCallback(() => {
@@ -104,8 +100,8 @@ function Suggester({
         return;
       }
 
-      if (selectedOptionIndex !== null && value !== "") {
-        onOptionMouseUp(selectedOptionIndex)();
+      if (selectedOption !== null && value !== "") {
+        onOptionMouseUp(selectedOption)();
       } else {
         setValue("");
         setShouldBlur(true);
@@ -115,14 +111,7 @@ function Suggester({
         }
       }
     },
-    [
-      closeDropdown,
-      onClear,
-      onOptionMouseUp,
-      selectedOptionIndex,
-      shouldBlur,
-      value,
-    ]
+    [closeDropdown, onClear, onOptionMouseUp, selectedOption, shouldBlur, value]
   );
 
   const onKeyDown = useCallback(
@@ -159,7 +148,7 @@ function Suggester({
         }
         case "Enter":
           event.preventDefault();
-          onOptionMouseUp(hoveredOptionIndex)();
+          onOptionMouseUp(filteredOptions[hoveredOptionIndex])();
           break;
         case "Esc":
         case "Escape":
@@ -207,7 +196,7 @@ function Suggester({
           }
         )}
         onMouseDown={onOptionMouseDown}
-        onMouseUp={onOptionMouseUp(index)}
+        onMouseUp={onOptionMouseUp(option)}
       >
         {option.label}
       </button>
