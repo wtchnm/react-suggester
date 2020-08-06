@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/wtchnm/react-suggester/compare/v1.4.0...v1.4.1) (2020-08-06)
+
+
+### Bug Fixes
+
+* selected option should not be an index ([a8adfac](https://github.com/wtchnm/react-suggester/commit/a8adfac299e443b4ffa8134882c824cfeb5307fb))
+
 # [1.4.0](https://github.com/wtchnm/react-suggester/compare/v1.3.0...v1.4.0) (2020-08-06)
 
 
