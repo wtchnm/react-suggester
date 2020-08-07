@@ -68,7 +68,7 @@
     "stylelint-config-standard": "20.0.0",
     "tailwindcss": "1.6.2",
     "ts-jest": "26.1.4",
-    "tslib": "2.0.0",
+    "tslib": "2.0.1",
     "typescript": "3.9.7",
     "webpack": "4.44.1"
   },
