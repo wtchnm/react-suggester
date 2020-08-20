@@ -1,11 +1,10 @@
 import React, { useCallback, useState, ReactElement } from "react";
-import { withKnobs, text, object } from "@storybook/addon-knobs";
+import { text, object } from "@storybook/addon-knobs";
 import Suggester from "../src/components/Suggester/Suggester";
 import { Option } from "../src/types";
 
 export default {
   title: "Suggester",
-  decorators: [withKnobs],
 };
 
 const DEFAULT_OPTIONS: Option[] = [

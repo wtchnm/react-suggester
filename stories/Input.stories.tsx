@@ -1,10 +1,9 @@
 import React, { ReactElement, useState, useCallback } from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { text } from "@storybook/addon-knobs";
 import Input from "../src/components/Input";
 
 export default {
   title: "Input",
-  decorators: [withKnobs],
 };
 
 export function Default(): ReactElement {
