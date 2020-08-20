@@ -1,13 +1,13 @@
 {
   "ReactSuggester.umd.js": {
-    "bundled": 9585,
-    "minified": 4043,
-    "gzipped": 1803
+    "bundled": 9798,
+    "minified": 4166,
+    "gzipped": 1829
   },
   "ReactSuggester.cjs.js": {
-    "bundled": 8794,
-    "minified": 4335,
-    "gzipped": 1803
+    "bundled": 8913,
+    "minified": 4425,
+    "gzipped": 1817
   },
   "ReactSuggester.esm.js": {
     "bundled": 8410,
