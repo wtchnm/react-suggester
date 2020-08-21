@@ -26,7 +26,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
           ref={ref}
           type="text"
           id={id}
-          className="mt-1 box-border w-full py-2 px-3 rounded border border-solid border-gray-400 bg-white text-base leading-normal placeholder-gray-500 focus:outline-none focus:shadow-outline focus:border-blue-400"
+          className="mt-1 box-border w-full py-2 px-3 rounded border border-solid border-gray-400 text-base leading-normal placeholder-gray-500 focus:outline-none focus:shadow-outline focus:border-blue-400"
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...rest}
         />
