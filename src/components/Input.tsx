@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
-import { nanoid } from "nanoid/non-secure";
+import React from "react";
+import useAutoId from "../utils/useAutoId";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "id"> {
   label: string;
 }
 
@@ -14,17 +15,17 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
     },
     ref
   ) => {
-    const componentId = useMemo(() => `Input-${nanoid()}`, []);
+    const id = useAutoId("Input");
 
     return (
       <div className="flex flex-col">
-        <label htmlFor={componentId} className="text-gray-700 leading-normal">
+        <label htmlFor={id} className="text-gray-700 leading-normal">
           {label}
         </label>
         <input
           ref={ref}
           type="text"
-          id={componentId}
+          id={id}
           className="mt-1 box-border w-full py-2 px-3 rounded border border-solid border-gray-400 bg-white text-base leading-normal placeholder-gray-500 focus:outline-none focus:shadow-outline focus:border-blue-400"
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...rest}
