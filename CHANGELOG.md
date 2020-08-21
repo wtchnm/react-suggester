@@ -1,3 +1,5 @@
+## [1.4.4](https://github.com/wtchnm/react-suggester/compare/v1.4.3...v1.4.4) (2020-08-21)
+
 ## [1.4.3](https://github.com/wtchnm/react-suggester/compare/v1.4.2...v1.4.3) (2020-08-21)
 
 
