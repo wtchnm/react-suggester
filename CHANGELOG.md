@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/wtchnm/react-suggester/compare/v1.4.2...v1.4.3) (2020-08-21)
+
+
+### Bug Fixes
+
+* **input:** auto id is not deterministic between client and server ([8b5aa3c](https://github.com/wtchnm/react-suggester/commit/8b5aa3cf8829f4d14a22a9817f8fc4d71444e5b0))
+
 ## [1.4.2](https://github.com/wtchnm/react-suggester/compare/v1.4.1...v1.4.2) (2020-08-20)
 
 ## [1.4.1](https://github.com/wtchnm/react-suggester/compare/v1.4.0...v1.4.1) (2020-08-06)
