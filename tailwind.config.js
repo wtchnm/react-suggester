@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["./src/**/*.tsx", "./stories/**/*.tsx"],
+  purge: ["./src/**/*.tsx"],
   variants: {
     backgroundColor: ["responsive", "hover", "focus", "active"],
   },
