@@ -2,7 +2,7 @@ import { babel } from "@rollup/plugin-babel";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
-import { sizeSnapshot } from "rollup-plugin-size-snapshot";
+import size from "rollup-plugin-size";
 
 const extensions = [".js", ".jsx", ".es6", ".es", ".mjs", ".ts", ".tsx"];
 
@@ -13,6 +13,7 @@ const common = {
     react: "React",
   },
   exports: "named",
+  plugins: [size()],
 };
 
 export default {
@@ -49,7 +50,6 @@ export default {
       extract: "ReactSuggester.css",
       sourceMap: true,
     }),
-    sizeSnapshot(),
     terser(),
   ],
 };
