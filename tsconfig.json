@@ -12,5 +12,5 @@
     "strict": true,
     "target": "ESNext"
   },
-  "include": [".storybook", "global.d.ts", "src", "stories"]
+  "include": ["global.d.ts", "src", "stories"]
 }
