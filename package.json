@@ -34,7 +34,7 @@
     "@storybook/addon-docs": "6.0.18",
     "@storybook/addons": "6.0.18",
     "@storybook/react": "6.0.18",
-    "@storybook/source-loader": "6.0.18",
+    "@storybook/source-loader": "6.0.20",
     "@storybook/storybook-deployer": "2.8.6",
     "@types/jest": "26.0.10",
     "@typescript-eslint/eslint-plugin": "3.10.1",
