@@ -33,7 +33,7 @@
     "@storybook/addon-controls": "6.0.18",
     "@storybook/addon-docs": "6.0.18",
     "@storybook/addons": "6.0.18",
-    "@storybook/react": "6.0.18",
+    "@storybook/react": "6.0.25",
     "@storybook/source-loader": "6.0.18",
     "@storybook/storybook-deployer": "2.8.6",
     "@types/jest": "26.0.10",
