@@ -1,6 +1,6 @@
 // Modified version of https://yarn.pm/@reach/auto-id.
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 let isServerHandoffComplete = false;
 let counter = 0;

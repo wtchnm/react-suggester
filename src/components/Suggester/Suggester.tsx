@@ -1,14 +1,13 @@
+import clsx from "clsx";
 import React, {
   ReactElement,
-  useState,
   useCallback,
   useMemo,
   useRef,
+  useState,
 } from "react";
-import clsx from "clsx";
-import Input from "../Input";
 import { Option } from "../../types";
-
+import Input from "../Input";
 import styles from "./Suggester.module.css";
 
 interface Props {

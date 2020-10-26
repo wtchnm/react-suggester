@@ -1,4 +1,4 @@
-import React, { useCallback, useState, ReactElement } from "react";
+import React, { ReactElement, useCallback, useState } from "react";
 import Suggester from "../src/components/Suggester/Suggester";
 import { Option } from "../src/types";
 
