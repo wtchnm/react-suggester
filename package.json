@@ -37,7 +37,7 @@
     "@storybook/source-loader": "6.0.27",
     "@storybook/storybook-deployer": "2.8.7",
     "@types/jest": "26.0.15",
-    "@typescript-eslint/eslint-plugin": "4.5.0",
+    "@typescript-eslint/eslint-plugin": "4.7.0",
     "@typescript-eslint/parser": "4.5.0",
     "autoprefixer": "9.8.6",
     "babel-loader": "8.1.0",
