@@ -188,10 +188,10 @@ function Suggester({
         type="button"
         key={`Suggester__option-${option.value}`}
         className={clsx(
-          "block w-full text-left select-none bg-white text-gray-700 py-1 px-3 cursor-pointer active:bg-gray-400 border-none leading-normal text-base",
+          "block w-full text-left select-none bg-white text-gray-700 py-1 px-3 cursor-pointer active:bg-gray-300 border-none leading-normal text-base",
           {
-            "hover:bg-gray-200": hoveredOptionIndex !== index,
-            "bg-gray-300": hoveredOptionIndex === index,
+            "hover:bg-gray-100": hoveredOptionIndex !== index,
+            "bg-gray-200": hoveredOptionIndex === index,
           }
         )}
         onMouseDown={onOptionMouseDown}
@@ -227,7 +227,7 @@ function Suggester({
         <div
           ref={dropdownRef}
           className={clsx(
-            "z-50 absolute overflow-auto mt-1 border border-solid border-gray-400 shadow-sm w-full bg-white rounded py-2 box-border",
+            "z-50 absolute overflow-auto mt-1 border border-solid border-gray-300 shadow-sm w-full bg-white rounded py-2 box-border",
             styles.Suggester__options
           )}
         >
