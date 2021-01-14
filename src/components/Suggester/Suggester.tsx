@@ -18,6 +18,7 @@ interface Props {
   async?: true;
   loading?: boolean;
   min?: number;
+  defaultValue?: string;
   onSearch?(value: string): void;
   onSelect?(option: Option): void;
   onClear?(): void;
@@ -30,11 +31,12 @@ function Suggester({
   async,
   loading,
   min = 3,
+  defaultValue = "",
   onSearch,
   onSelect,
   onClear,
 }: Props): ReactElement {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue);
   const [open, setOpen] = useState(false);
   const [shouldBlur, setShouldBlur] = useState(true);
   const [hoveredOptionIndex, setHoveredOptionIndex] = useState(0);

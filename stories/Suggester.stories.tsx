@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from "react";
+import React, { ReactElement, useCallback, useEffect, useState } from "react";
 import Suggester from "../src/components/Suggester/Suggester";
 import { Option } from "../src/types";
 
@@ -26,6 +26,7 @@ export function Basic(): ReactElement {
   return <Suggester label="Name" options={DEFAULT_OPTIONS} />;
 }
 
+const defaultValue = DEFAULT_OPTIONS[0].label;
 export function Async(): ReactElement {
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState<Option[]>([]);
@@ -43,6 +44,10 @@ export function Async(): ReactElement {
     }, 300);
   }, []);
 
+  useEffect(() => {
+    onSearch(defaultValue);
+  }, [onSearch]);
+
   return (
     <Suggester
       label="Name"
@@ -50,6 +55,7 @@ export function Async(): ReactElement {
       loading={loading}
       options={options}
       onSearch={onSearch}
+      defaultValue={defaultValue}
     />
   );
 }
