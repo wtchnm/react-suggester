@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/wtchnm/react-suggester/compare/v1.5.1...v1.6.0) (2021-01-15)
+
+
+### Features
+
+* **suggester:** add autoComplete prop ([50bb4c6](https://github.com/wtchnm/react-suggester/commit/50bb4c6fab5f908e3eccbaf656b440ccfb0c8c43))
+
 ## [1.5.1](https://github.com/wtchnm/react-suggester/compare/v1.5.0...v1.5.1) (2021-01-15)
 
 
