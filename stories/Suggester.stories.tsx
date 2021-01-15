@@ -23,7 +23,9 @@ const DEFAULT_OPTIONS: Option[] = [
 ];
 
 export function Basic(): ReactElement {
-  return <Suggester label="Name" options={DEFAULT_OPTIONS} />;
+  return (
+    <Suggester label="Name" options={DEFAULT_OPTIONS} autoComplete="off" />
+  );
 }
 
 const defaultOption = DEFAULT_OPTIONS[0];
