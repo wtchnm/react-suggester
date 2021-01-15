@@ -18,7 +18,7 @@ interface Props {
   async?: true;
   loading?: boolean;
   min?: number;
-  defaultValue?: string;
+  defaultOption?: Option;
   onSearch?(value: string): void;
   onSelect?(option: Option): void;
   onClear?(): void;
@@ -31,16 +31,18 @@ function Suggester({
   async,
   loading,
   min = 3,
-  defaultValue = "",
+  defaultOption: defaultValue,
   onSearch,
   onSelect,
   onClear,
 }: Props): ReactElement {
-  const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(defaultValue?.label ?? "");
   const [open, setOpen] = useState(false);
   const [shouldBlur, setShouldBlur] = useState(true);
   const [hoveredOptionIndex, setHoveredOptionIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+  const [selectedOption, setSelectedOption] = useState<Option | null>(
+    defaultValue ?? null
+  );
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const closeDropdown = useCallback(() => {
