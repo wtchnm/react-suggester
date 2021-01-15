@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/wtchnm/react-suggester/compare/v1.4.4...v1.5.0) (2021-01-14)
+
+
+### Features
+
+* **Suggester:** default value ([ba02f24](https://github.com/wtchnm/react-suggester/commit/ba02f2473539ed20f944a64cfafcf15e82314081))
+
 ## [1.4.4](https://github.com/wtchnm/react-suggester/compare/v1.4.3...v1.4.4) (2020-08-21)
 
 ## [1.4.3](https://github.com/wtchnm/react-suggester/compare/v1.4.2...v1.4.3) (2020-08-21)
