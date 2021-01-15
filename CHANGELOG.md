@@ -1,3 +1,15 @@
+## [1.5.1](https://github.com/wtchnm/react-suggester/compare/v1.5.0...v1.5.1) (2021-01-15)
+
+
+### Code Refactoring
+
+* **suggester:** replace defaultValue prop by defaultOption ([469ed4c](https://github.com/wtchnm/react-suggester/commit/469ed4c3a4bda20322fd0e8597300f3e24c57055))
+
+
+### BREAKING CHANGES
+
+* **suggester:** The defaultValue prop has been replaced by the defaultOption prop.
+
 # [1.5.0](https://github.com/wtchnm/react-suggester/compare/v1.4.4...v1.5.0) (2021-01-14)
 
 
