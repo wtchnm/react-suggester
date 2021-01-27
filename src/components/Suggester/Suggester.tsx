@@ -10,7 +10,7 @@ import { Option } from "../../types";
 import Input from "../Input";
 import styles from "./Suggester.module.css";
 
-interface Props {
+interface Properties {
   options: Option[];
 
   label: string;
@@ -37,15 +37,15 @@ function Suggester({
   onSearch,
   onSelect,
   onClear,
-}: Props): ReactElement {
+}: Properties): ReactElement {
   const [value, setValue] = useState(defaultOption?.label ?? "");
   const [open, setOpen] = useState(false);
   const [shouldBlur, setShouldBlur] = useState(true);
   const [hoveredOptionIndex, setHoveredOptionIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState<Option | null>(
-    defaultOption ?? null
+  const [selectedOption, setSelectedOption] = useState<Option | undefined>(
+    defaultOption
   );
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownReference = useRef<HTMLDivElement>(null);
 
   const closeDropdown = useCallback(() => {
     setOpen(false);
@@ -105,7 +105,7 @@ function Suggester({
         return;
       }
 
-      if (selectedOption !== null && value !== "") {
+      if (selectedOption && value !== "") {
         onOptionMouseUp(selectedOption)();
       } else {
         setValue("");
@@ -121,7 +121,7 @@ function Suggester({
 
   const onKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (event.defaultPrevented || !dropdownRef.current) {
+      if (event.defaultPrevented || !dropdownReference.current) {
         return;
       }
       switch (event.key) {
@@ -130,10 +130,10 @@ function Suggester({
           event.preventDefault();
           if (hoveredOptionIndex === filteredOptions.length - 1) {
             setHoveredOptionIndex(0);
-            dropdownRef.current.scrollTop = 0;
+            dropdownReference.current.scrollTop = 0;
           } else {
             setHoveredOptionIndex(hoveredOptionIndex + 1);
-            dropdownRef.current.scrollTop = hoveredOptionIndex * 32;
+            dropdownReference.current.scrollTop = hoveredOptionIndex * 32;
           }
 
           break;
@@ -143,10 +143,11 @@ function Suggester({
           event.preventDefault();
           if (hoveredOptionIndex === 0) {
             setHoveredOptionIndex(filteredOptions.length - 1);
-            dropdownRef.current.scrollTop = (filteredOptions.length - 1) * 32;
+            dropdownReference.current.scrollTop =
+              (filteredOptions.length - 1) * 32;
           } else {
             setHoveredOptionIndex(hoveredOptionIndex - 1);
-            dropdownRef.current.scrollTop = (hoveredOptionIndex - 1) * 32;
+            dropdownReference.current.scrollTop = (hoveredOptionIndex - 1) * 32;
           }
 
           break;
@@ -172,7 +173,7 @@ function Suggester({
       optionText = "Loading...";
     } else if (async && value.length < min) {
       optionText = `Enter at least ${min} characters`;
-    } else if (!filteredOptions.length) {
+    } else if (filteredOptions.length === 0) {
       optionText = "No suggestions";
     }
 
@@ -232,7 +233,7 @@ function Suggester({
       />
       {open && (
         <div
-          ref={dropdownRef}
+          ref={dropdownReference}
           className={clsx(
             "z-50 absolute overflow-auto mt-1 border border-solid border-gray-300 shadow-sm w-full bg-white rounded py-2 box-border",
             styles.Suggester__options

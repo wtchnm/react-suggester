@@ -1,19 +1,19 @@
 import React from "react";
 import useAutoId from "../utils/useAutoId";
 
-interface Props
+interface Properties
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "id"> {
   label: string;
 }
 
-const Input = React.forwardRef<HTMLInputElement, Props>(
+const Input = React.forwardRef<HTMLInputElement, Properties>(
   (
     {
       label,
 
       ...rest
     },
-    ref
+    reference
   ) => {
     const id = useAutoId("Input");
 
@@ -23,7 +23,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
           {label}
         </label>
         <input
-          ref={ref}
+          ref={reference}
           type="text"
           id={id}
           className="mt-1 box-border w-full py-2 px-3 rounded border border-solid border-gray-400 text-base leading-normal placeholder-gray-500 focus:outline-none focus:ring focus:border-blue-400"
