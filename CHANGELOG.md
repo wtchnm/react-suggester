@@ -1,3 +1,23 @@
+### [1.6.1](https://github.com/wtchnm/react-suggester/compare/v1.6.0...v1.6.1) (2021-01-27)
+
+
+### Code Refactoring
+
+* fix eslint errors ([264660a](https://github.com/wtchnm/react-suggester/commit/264660a0efe258f5c556d6f028d61a713220e5f6))
+
+
+### Documentation
+
+* regenerate changelog with conventionalcommits preset ([6a10a5d](https://github.com/wtchnm/react-suggester/commit/6a10a5d0d9007edf1d973d3d27f1e27e1cdb003e))
+
+
+### Miscellaneous Chores
+
+* **eslint:** improve config ([1bebc3d](https://github.com/wtchnm/react-suggester/commit/1bebc3d68da1761a05d04c0401043e2f66efdde7))
+* **semantic-release:** improve configuration ([6df1551](https://github.com/wtchnm/react-suggester/commit/6df1551c2b3f94a8fafe554e2a0b970a35fe1e7c))
+* **vscode:** use typescript from node_modules ([5110230](https://github.com/wtchnm/react-suggester/commit/51102307597572c0d078ec02b6712dec17b4e966))
+* upgrade dependenecies ([25d23a9](https://github.com/wtchnm/react-suggester/commit/25d23a97f26623cb771dea61171399ea45e0cf1b))
+
 ## [1.6.0](https://github.com/wtchnm/react-suggester/compare/v1.5.1...v1.6.0) (2021-01-15)
 
 
@@ -133,4 +153,3 @@
 * 'No suggestions' message is not being displayer on sync suggesters ([f70a06a](https://github.com/wtchnm/react-suggester/commit/f70a06a7c9db374734d142bf0ac52e95f819810a))
 * inputs must always have labels ([b28c34a](https://github.com/wtchnm/react-suggester/commit/b28c34a5e47fce4c8238273f6436b4b20fda2fd8))
 * remove unused forwarded ref ([c598037](https://github.com/wtchnm/react-suggester/commit/c598037673a49c2f124546974ea574189bb360ad))
-
