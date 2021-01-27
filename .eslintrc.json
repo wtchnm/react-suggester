@@ -1,14 +1,15 @@
 {
-  "parserOptions": {
-    "ecmaVersion": 11
-  },
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/warnings",
+    "plugin:import/errors",
+    "eslint-config-airbnb-base",
+    "plugin:unicorn/recommended",
+    "prettier",
+    "prettier/unicorn"
+  ],
   "overrides": [
-    {
-      "files": ["rollup.config.js"],
-      "parserOptions": {
-        "sourceType": "module"
-      }
-    },
     {
       "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser",
@@ -17,48 +18,44 @@
       },
       "extends": [
         "eslint:recommended",
+        "plugin:import/warnings",
+        "plugin:import/errors",
+        "plugin:import/typescript",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "airbnb",
-        "airbnb/hooks",
-        "plugin:import/typescript",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "airbnb-typescript",
+        "airbnb/hooks",
+        "plugin:unicorn/recommended",
         "prettier",
         "prettier/@typescript-eslint",
-        "prettier/react"
+        "prettier/react",
+        "prettier/unicorn"
       ],
       "rules": {
+        "import/namespace": "off",
         "import/no-extraneous-dependencies": [
           "error",
           {
-            "devDependencies": ["stories/**", "rollup.config.js"],
-            "optionalDependencies": false,
-            "peerDependencies": true,
-            "bundledDependencies": false
+            "devDependencies": ["stories/**"],
+            "optionalDependencies": false
           }
         ],
 
-        "no-void": ["error", { "allowAsStatement": true }],
+        "react/prop-types": "off",
+        "react/require-default-props": "off",
 
-        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-        "react/jsx-one-expression-per-line": 0,
-        "react/prop-types": 0,
-        "react/require-default-props": 0,
-
-        "import/extensions": [
-          1,
+        "unicorn/filename-case": [
+          "error",
           {
-            "ts": "never"
+            "cases": {
+              "camelCase": true,
+              "pascalCase": true
+            }
           }
-        ],
-        "import/named": 0,
-        "import/namespace": 0,
-        "import/default": 0,
-        "import/no-named-as-default-member": 0
+        ]
       }
     }
   ]
