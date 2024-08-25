@@ -41,7 +41,7 @@
     "@typescript-eslint/eslint-plugin": "4.14.1",
     "@typescript-eslint/parser": "4.14.1",
     "autoprefixer": "9.8.6",
-    "babel-loader": "8.2.2",
+    "babel-loader": "8.3.0",
     "babel-preset-react-app": "10.0.0",
     "conventional-changelog-conventionalcommits": "4.5.0",
     "cross-env": "7.0.3",
