@@ -70,7 +70,7 @@
     "semantic-release": "17.3.7",
     "style-loader": "2.0.0",
     "stylelint": "13.9.0",
-    "stylelint-config-prettier": "8.0.2",
+    "stylelint-config-prettier": "9.0.5",
     "stylelint-config-standard": "20.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "ts-jest": "26.4.4",
