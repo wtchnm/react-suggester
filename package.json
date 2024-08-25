@@ -68,7 +68,7 @@
     "rollup-plugin-size-snapshot": "0.12.0",
     "rollup-plugin-terser": "7.0.2",
     "semantic-release": "17.3.7",
-    "style-loader": "2.0.0",
+    "style-loader": "3.3.4",
     "stylelint": "13.9.0",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0",
